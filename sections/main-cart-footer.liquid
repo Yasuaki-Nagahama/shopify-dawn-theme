@@ -75,6 +75,13 @@
                   {%- endif -%}
                 </small>
               </div>
+            {%- when 'cartAttribute' -%}
+              <p class="cart-attribute__field">
+                <label>How many times have you purchased it</label><br>
+                <input form="cart" type="radio" name="attributes[How many times have you purchased it]" value="First Purchase"{% if cart.attributes["How many times have you purchased it"] == "First Purchase" %} checked{% endif %}> <span>First Purchase</span><br>
+                <input form="cart" type="radio" name="attributes[How many times have you purchased it]" value="Buy 2 times"{% if cart.attributes["How many times have you purchased it"] == "Buy 2 times" %} checked{% endif %}> <span>Buy 2 times</span><br>
+                <input form="cart" type="radio" name="attributes[How many times have you purchased it]" value="More than 3 times"{% if cart.attributes["How many times have you purchased it"] == "More than 3 times" %} checked{% endif %}> <span>More than 3 times</span><br>
+              </p>
             {%- else -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
                 <noscript>
@@ -104,7 +111,6 @@
               {%- endif -%}
           {%- endcase -%}
         {% endfor %}
-
         <div id="cart-errors"></div>
       </div>
     </div>
@@ -174,6 +180,10 @@
       "type": "buttons",
       "name": "t:sections.main-cart-footer.blocks.buttons.name",
       "limit": 1
+    },
+    {
+      "type": "cartAttribute",
+      "name": "questionnaire"
     },
     {
       "type": "@app"

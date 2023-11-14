@@ -532,6 +532,11 @@
               {% render 'icon-with-text',
                 block: block
               %}
+            {%- when 'lineItem' -%}
+              <p class="line-item-property__field">
+                <label for="request">prease input request</label><br/>
+                <input id="request" type="text" name="properties[request]" form="product-form-{{ section.id }}">
+              </p>
           {%- endcase -%}
         {%- endfor -%}
         <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -710,6 +715,10 @@
           "label": "t:sections.main-product.blocks.text.settings.text_style.label"
         }
       ]
+    },
+    {
+      "type": "lineItem",
+      "name": "request"
     },
     {
       "type": "title",
