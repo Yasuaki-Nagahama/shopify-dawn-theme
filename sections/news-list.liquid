@@ -1,0 +1,58 @@
+{% if section.blocks.size != 0 %}
+  <div class="color-black1 isolate gradient">
+    <div class="collection section-{{ section.id }}-padding collection--full-width">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width">
+      <h2 class="title inline-richtext h2 scroll-trigger animate--slide-in">
+        NEWS
+      </h2>
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}">
+          <h3>{{ block.settings.date_picker | date: "%Y-%m-%d" }} {{ block.settings.title }}</h3>
+        </a>
+      {% endfor %}
+    </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "news list collection",
+  "blocks": [
+    {
+         "name": "NEWS",
+         "type": "news",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "date_picker",
+            "label": "Choose date",
+            "default": "01-01-2023",
+            "info": "e.g. mm-dd-yyyy"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "URL"
+          }
+        ]
+  }
+ ],
+
+"presets": [
+   {
+     "name": "NEWS LIST Collection",
+     "blocks": [
+        {
+          "type": "news"
+        }
+     ]
+   }
+ ]
+}
+{% endschema %}
